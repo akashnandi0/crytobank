@@ -21,7 +21,7 @@ def transferamount(request):
             amount = form.cleaned_data.get("amount")
             account_number = form.cleaned_data.get("account_number")
             try:
-                object = accountInfoModel.objects.get(mpin=mpin)
+                object = accountInfoModel.objects.get(username=request.user,mpin=mpin)
                 object1 = accountInfoModel.objects.get(account_number=account_number)
                 bal = object.balance - amount
                 bal1 = object1.balance + amount
@@ -59,7 +59,7 @@ def depositamount(request):
             amount = form.cleaned_data.get("amount")
             messages.success(request, "Deposited Successfully")
             try:
-                object = accountInfoModel.objects.get(mpin=mpin)
+                object = accountInfoModel.objects.get(username=request.user,mpin=mpin)
                 bal = object.balance + amount
                 object.balance = bal
                 object.save()
@@ -91,7 +91,7 @@ def withdrawamount(request):
             mpin = form.cleaned_data.get("mpin")
             amount = form.cleaned_data.get("amount")
             try:
-                object = accountInfoModel.objects.get(mpin=mpin)
+                object = accountInfoModel.objects.get(username=request.user,mpin=mpin)
 
                 bal = object.balance - amount
                 object.balance = bal
