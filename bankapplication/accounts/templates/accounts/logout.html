@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Logout</title>
-</head>
-<body>
+{% extends 'base_layout1.html' %}
+{% block title %}
+
+Logout Page
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+         h2 {
+            border-bottom: 1px solid;
+            display: block;
+            font-size: 50;
+            font-weight: bold;
+            font-family:franklin gothic medium;
+            color:black;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
 {% if user.is_authenticated %}
     <div class="content">
         <div class="section-inner clearfix">
@@ -14,11 +32,11 @@
         </div>
     </div>
 {% else %}
-YOU ARE NOT LOGGED IN
+<div class="container" style="text-align:center">
+    <h3>YOU ARE NOT LOGGED IN</h3><br>
+    <h5>LOGIN TO CONTINUE</h5>
 <br>
 <a href="{% url 'login' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Login</button></a>
-
-
+</div>
 {% endif %}
-</body>
-</html>
+{% endblock %}

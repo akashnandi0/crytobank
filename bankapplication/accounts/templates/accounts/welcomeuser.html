@@ -47,12 +47,12 @@ WELCOME USER
 <!--<a href="{% url 'signup' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Create New Account</button></a>-->
 </div>
 {% else %}
-<div class="container text-center">
-YOU ARE NOT LOGGED IN
+<div class="container" style="text-align:center">
+    <h3>YOU ARE NOT LOGGED IN</h3>
+    <h5>LOGIN TO CONTINUE</h5>
 <br>
 <a href="{% url 'login' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Login</button></a>
 </div>
-
 {% endif %}
 
 {% endblock %}
