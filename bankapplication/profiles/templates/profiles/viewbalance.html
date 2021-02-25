@@ -1,0 +1,33 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+View Account
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+
+<h3>Account Information - <span id="prof_name">{{ request.user.first_name }} {{ request.user.last_name }}</span> </h3>
+
+<table style="width:100%;border-spacing:15px;border:10px solid black;">
+  <tr>
+    <th>Account Name</th>
+    <td>{{ request.user.first_name }} {{ request.user.last_name }}</td>
+  </tr>
+  <tr>
+    <th>Balance</th>
+    <td>{{st.balance}}</td>
+  </tr>
+</table>
+<br>
+<a href="{%url 'welcomeuser'%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Back to HomePage</button></a>
+{% endblock %}

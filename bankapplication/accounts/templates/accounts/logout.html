@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+    <div class="content">
+        <div class="section-inner clearfix">
+
+        <p>You are logged out<a href="{% url 'login' %}">Click here</a> to login again.</p>
+
+        </div>
+    </div>
+{% else %}
+YOU ARE NOT LOGGED IN
+<br>
+<a href="{% url 'login' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Login</button></a>
+
+
+{% endif %}
+</body>
+</html>

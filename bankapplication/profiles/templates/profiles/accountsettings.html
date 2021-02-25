@@ -1,0 +1,29 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+Account Settings
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+{% if user.is_authenticated %}
+<h1>SETUP YOUR ACCOUNT - {{ request.user.first_name }} {{ request.user.last_name }}</h1>
+<a href="{% url 'generateaccno' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:200px">Generate Account Number & PIN</button></a>
+{% else %}
+YOU ARE NOT LOGGED IN
+<br>
+<a href="{% url 'login' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Login</button></a>
+
+
+{% endif %}
+
+{% endblock %}

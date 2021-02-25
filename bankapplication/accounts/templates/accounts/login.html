@@ -1,0 +1,46 @@
+{% extends 'base_layout1.html' %}
+{% block title %}
+
+Login Page
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+         h2 {
+            border-bottom: 1px solid;
+            display: block;
+            font-size: 50;
+            font-weight: bold;
+            font-family:franklin gothic medium;
+            color:black;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+    <div class="container text-center">
+        <form class="form-control" action="/accounts/login/" method="post">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <br>
+            {{ form.as_p }}
+
+            <br>
+
+            <button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">
+                <i class="fa fa-sign-in"></i>
+                Login
+            </button>
+            <br> <br>
+        </form>
+        <small class="row">
+             <a href="{% url 'password_reset' %}" class="col text-left"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Forgot password?</button></a>
+             <a href="{% url 'signup' %}" class="col text-right"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Create Account</button></a>
+        </small>
+    </div>
+{% endblock %}

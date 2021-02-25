@@ -1,0 +1,54 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+Account Activity
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+<br>
+<div class="container" style="text-align:center">
+    <h2 style="color:black">Account History - {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+<br>
+
+<form  method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit">
+</form>
+</div>
+<!--{% for trans in transaction %}-->
+<!--Account:{{trans.account_number}}<br>-->
+<!--Amount:{{trans.amount}}<br>-->
+<!--Date:{{trans.date}}<br><br>-->
+<!--{% endfor %}-->
+{% if transaction %}
+<div class="container" style="text-align:center">
+<table style="width:100%;border-spacing:15px;border:5px solid black;padding: 15px;">
+  <tr>
+    <th style="text-align:center">Account Number</th>
+    <th style="text-align:center">Amount</th>
+    <th style="text-align:center">Transaction Date</th>
+  </tr>
+  {% for trans in transaction %}
+  <tr>
+    <td style="text-align:center">{{trans.account_number}}</td>
+    <td style="text-align:center">{{trans.amount}}</td>
+    <td style="text-align:center">{{trans.date}}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% else %}
+<h3 style="text-align:center; color:green;">NO TRANSACTIONS FOUND</h3>
+{% endif %}
+{% endblock %}

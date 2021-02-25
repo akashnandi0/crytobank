@@ -1,0 +1,88 @@
+{% extends 'base_layout1.html' %}
+{% block title %}
+
+CRYPTO BANK
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        h1 {
+            border-bottom: 1px solid;
+            display: block;
+            font-size: 50;
+            font-weight: bold;
+            font-family:franklin gothic medium;
+            color:black;
+        }
+        h5 {
+            font-weight: 400;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block bodycontent %}
+    <div class="container text-center">
+        <h1>Welcome to Crypto Bank</h1>
+        <h5 style="font-style: italic;">we will serve you till your death</h5>
+    </div>
+
+    <br>
+<div class="container">
+    <h5>Presenting Our Latest Schemes</h5>
+<div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+              <h5 class="card-title"><img src="/static/images/home.jpg" width="50px">HOUSE LOAN</h5>
+              <p class="card-text">Choose from a wide range of home loans depending on your needs</p>
+              <a href="#" class="btn btn-primary">Explore Plans</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><img src="/static/images/car.jpg" width="50px">CAR LOAN</h5>
+            <p class="card-text">Benefit from a high Loan To Value ratio</p>
+            <a href="#" class="btn btn-primary">Explore Plans</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+</div>
+    <div class="container">
+        <div class="row">
+             <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><img src="/static/images/education.jpg" width="50px">EDUCATION LOAN</h5>
+                        <p class="card-text">Loans available for a variety of courses with easy loan disbursal</p>
+                        <a href="#" class="btn btn-primary">Explore Plans</a>
+                    </div>
+                </div>
+             </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><img src="/static/images/business.png" width="50px">BUSINESS LOAN</h5>
+                        <p class="card-text">Grow your business with minimum documentation & quick approvals</p>
+                        <a href="#" class="btn btn-primary">Explore Plans</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    <br>
+{% endblock %}

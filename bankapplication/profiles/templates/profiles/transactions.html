@@ -1,0 +1,72 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+Transactions
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        h1 {
+            border-bottom: 1px solid;
+            display: block;
+            font-size: 50;
+            font-weight: bold;
+            font-family:franklin gothic medium;
+        }
+        h5 {
+            font-weight: 400;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+
+{% block bodycontent %}
+<div class="container text-center">
+    <h1>Available Transactions</h1>
+</div>
+
+    <br>
+<div class="container" style="text-align:center;">
+<div class="row">
+       <div class="col-sm-12">
+           <div class="card">
+               <div class="card-body">
+                   <h5 class="card-title"><img src="/static/images/withdraw.png" width="50px">&nbsp;&nbsp;<a href="{% url 'withdrawamount' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Withdraw</button></a>
+                                              </h5>
+               </div>
+           </div>
+       </div>
+</div>
+<div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><img src="/static/images/deposit.png" width="50px">&nbsp;&nbsp;<a href="{% url 'depositamount' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Deposit</button></a>
+                                              </h5>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="row">
+      <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><img src="/static/images/transfer.png" width="50px">&nbsp;&nbsp;<a href="{% url 'transferamount' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Transfer</button></a>
+                        </h5>
+                    </div>
+                </div>
+      </div>
+</div>
+</div>
+
+{% endblock %}
+

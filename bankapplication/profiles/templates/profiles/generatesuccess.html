@@ -1,0 +1,20 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+Success Generated
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+Successfully Generated
+<a href="{%url 'welcomeuser'%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Back to HomePage</button></a>
+{% endblock %}

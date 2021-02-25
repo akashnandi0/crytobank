@@ -1,0 +1,25 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+Success
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+
+<h2>Saved successfully...</h2>
+
+
+    <a href="updateprofile">update</a>
+
+<a href="{%url 'welcomeuser'%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Back to HomePage</button></a>
+{% endblock %}

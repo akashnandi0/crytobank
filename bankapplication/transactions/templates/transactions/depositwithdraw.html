@@ -1,0 +1,26 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+Deposit/Withdraw
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+<h2>Enter the details</h2>
+<form action="" method="post">
+    {% csrf_token%}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-primary" style="background-color:white;color:green;width:100px;font-size:13px;font-weight:bold;">
+</form>
+<br>
+<a href="{% url 'welcomeuser' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Back to Home</button></a>
+{% endblock %}

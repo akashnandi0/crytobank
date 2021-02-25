@@ -1,0 +1,26 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+Create Profile
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: bottom;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+<h3>Creating Profile - <span id="prof_name">{{ request.user.first_name }} {{ request.user.last_name }}</span> </h3>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+<button type="submit">Create</button>
+</form>
+<a href="{%url 'welcomeuser'%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Back to HomePage</button></a>
+{% endblock %}

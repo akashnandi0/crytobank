@@ -1,0 +1,58 @@
+{% extends 'base_layout2.html' %}
+{% block title %}
+
+WELCOME USER
+
+{% endblock %}
+{% block stylecontent %}
+    <style>
+        .foot {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+    </style>
+{% endblock %}
+{% block bodycontent %}
+{% if user.is_authenticated %}
+
+<h6 class="col text-right">{% now "D d M Y h:m:s" %}</h6>
+
+
+<br><br>
+<div class="container text-center">
+     <h2 style="color:black;">Welcome, <span id="prof_name">{{ request.user.first_name }} {{ request.user.last_name }}</span> </h2>
+     <h6 style="color:black;font-style:italic;">It's good to have you here.</h6>
+</div>
+<div class="container text-center">
+{% if uid is None %}
+<font color="green"><h6 style="font-weight:bold; display: block;
+  font-size: 15px;font-color:red;">Note: Mandotory to create profile</h6></font>
+<a href="{% url 'createprofile' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Create Profile</button></a>
+{% else %}
+<a href="{%url 'updateprofile' uid%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Update Profile</button></a>
+<a href="{%url 'viewprofile' uid%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Profile Details</button></a>
+<a href="{%url 'viewaccount' uid%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Account Details</button></a>
+<a href="{% url 'transactions' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Transactions</button></a>
+<a href="{% url 'accountactivity' uid%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Account Activity</button></a>
+<a href="{% url 'balanceenquiry' uid %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">View Balance</button></a>
+{% endif %}
+<a href="{% url 'change_password' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Change Password</button></a><br>
+<font color="red"><h6 style="font-weight:bold; display: block;
+  font-size: 15px;font-color:red;">Note: Once account is deleted you wont be able to access it</h6></font>
+<a href="{% url 'deleteaccount' uid%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Close Account</button></a>
+<!--<a href="http://127.0.0.1:8000/"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Log Out</button></a>-->
+
+<!--<a href="{% url 'signup' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Create New Account</button></a>-->
+</div>
+{% else %}
+<div class="container text-center">
+YOU ARE NOT LOGGED IN
+<br>
+<a href="{% url 'login' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Login</button></a>
+</div>
+
+{% endif %}
+
+{% endblock %}
