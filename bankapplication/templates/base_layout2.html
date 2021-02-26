@@ -17,10 +17,28 @@
         {% endblock %}
 
         <link rel="stylesheet" href="/static/common-styles.css">
-
+    <script>
+function startTime() {
+    var today = new Date();
+    var D = today.getDate();
+    var M = today.getMonth();
+    var Y = today.getYear();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
     </head>
 
-    <body>
+    <body onload="startTime()">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
             <img src="/static/images/crypto3.jpg" width="50px">
             <a class="navbar-brand" href="{% url 'myhome' %}">Crypto Bank</a>
@@ -31,15 +49,16 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="{% url 'welcomeuser' %}" id="nav-home">Home</a>
                     <a class="nav-item nav-link active" href="{% url 'logout' %}" id="nav-logout">Logout</a>
-
                 </div>
             </div>
+         <time id="txt" style="color:white;"></time>
         </nav>
 
         <br> <br> <br>
+        <p>&nbsp;{% now "D d M Y" %}</p>
+
 
         {% block bodycontent %}
-
         {% endblock %}
 
         <!-- FOOTER -->
