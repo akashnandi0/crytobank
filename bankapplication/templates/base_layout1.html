@@ -53,10 +53,9 @@ function checkTime(i) {
                 </div>
 
             </div>
-         <time id="txt" style="color:white;"></time>
      </nav>
         <br><br><br>
-        <p>&nbsp;{% now "D d M Y" %}</p>
+        <marquee><p style="color:black;font-size:12px;font-weight:900">Current Date: {% now "D d M Y " %}, Current Time: <time id="txt" style="color:black;"></time></p></marquee>
 
         {% block bodycontent %}
 
@@ -65,7 +64,7 @@ function checkTime(i) {
         <!-- FOOTER -->
         <section class="foot">
             <div class="text-center">
-                &copy; Website created by <a href="#" target="_blank">Akash Nandi</a>
+                &copy; Website created by <a href="https://www.linkedin.com/in/akash-nandi-68486b168">Akash Nandi</a>
                 <br>
                 Developed at <a href="https://www.focaloid.com/" target="_blank">Focaloid Technologies</a>
             </div>
