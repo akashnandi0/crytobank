@@ -172,7 +172,7 @@ class accountActivity(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         mpin = accountInfoModel.objects.get(username=self.request.user).mpin
-        return Transferdetails.objects.filter(mpin=mpin).order_by('-date')
+        return Transferdetails.objects.filter(mpin=mpin).order_by('-date')[:10]
         # trans = transferamount.objects.filter(mpin=mpin)
         # context["transaction"] = trans
         # return render("transactions/accountactivity1.html")
