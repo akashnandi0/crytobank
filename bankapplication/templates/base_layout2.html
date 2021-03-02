@@ -55,7 +55,8 @@ function checkTime(i) {
         </nav>
 
         <br> <br> <br>
-        <marquee><p style="color:black;font-size:12px;font-weight:900">Current Date: {% now "D d M Y " %}, Current Time: <time id="txt" style="color:black;"></time></p></marquee>
+        <marquee><p style="color:black;font-size:12px;font-weight:900">Current Date: {% now "D d M Y " %}, Current Time: <time id="txt" style="color:black;"></time>, Login Date & Time : {{request.user.last_login}}</p></marquee>
+<!--        <p style="color:black;font-size:12px;font-weight:900">Login Date & Time : {{request.user.last_login}}</p>-->
 
 
         {% block bodycontent %}

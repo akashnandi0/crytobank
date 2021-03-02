@@ -12,9 +12,6 @@ import random
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-from transactions.forms import BalanceCheckForm
-from transactions.models import Transferdetails
-
 
 class CreateProfile(LoginRequiredMixin, CreateView):
     form_class = createProfileForm
@@ -23,6 +20,7 @@ class CreateProfile(LoginRequiredMixin, CreateView):
 
     def get_initial(self):
         return {'user': self.request.user}
+
 
 @login_required
 def success(request):
@@ -47,6 +45,7 @@ class ViewprofileView(LoginRequiredMixin, DetailView):
     success_url = reverse_lazy('welcomeuser')
     template_name = "profiles/viewprofile.html"
 
+
 @login_required
 def ViewaccountView(request, pk):
     st = accountInfoModel.objects.get(id=pk)
@@ -64,6 +63,7 @@ class Deleteprofile(LoginRequiredMixin, DeleteView):
     fields = "__all__"
     success_url = reverse_lazy('myhome')
     template_name = "profiles/deleteprofile.html"
+
 
 @login_required
 def change_password(request):
@@ -93,9 +93,11 @@ def genpin():
     # return a 4 digit random number
     return int(random.uniform(1000, 9999))
 
+
 @login_required
 def accountsettings(request):
     return render(request, "profiles/accountsettings.html")
+
 
 @login_required
 def generateaccno(request):
@@ -118,5 +120,3 @@ def generateaccno(request):
 @login_required
 def transactions(request):
     return render(request, "profiles/transactions.html")
-
-

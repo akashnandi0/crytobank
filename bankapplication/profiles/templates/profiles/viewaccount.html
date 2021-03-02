@@ -15,10 +15,9 @@ View Account
     </style>
 {% endblock %}
 {% block bodycontent %}
-
+<div class="container">
 <h3>Account Information - <span id="prof_name">{{ request.user.first_name }} {{ request.user.last_name }}</span> </h3>
-
-<table style="width:100%;border-spacing:15px;border:10px solid black;">
+<table style="width:100%;border-spacing:15px;border:5px solid black;">
   <tr>
     <th>Account Name</th>
     <td>{{ request.user.first_name }} {{ request.user.last_name }}</td>
@@ -40,6 +39,9 @@ View Account
     <td>{{st.balance}}</td>
   </tr>
 </table>
+</div>
 <br>
-<a href="{%url 'welcomeuser'%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Back to HomePage</button></a>
+<div class="container" style="text-align:center">
+<a href="{%url 'welcomeuser'%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Back to Home Page</button></a>
+</div>
 {% endblock %}

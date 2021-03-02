@@ -17,8 +17,6 @@ WELCOME USER
 {% block bodycontent %}
 {% if user.is_authenticated %}
 
-<!--<time class="col text-right">{% now "D d M Y" %}</time>-->
-
 
 <br><br>
 <div class="container text-center">
@@ -42,9 +40,6 @@ WELCOME USER
 <font color="red"><h6 style="font-weight:bold; display: block;
   font-size: 15px;font-color:red;">Note: Once account is deleted you wont be able to access it</h6></font>
 <a href="{% url 'deleteaccount' uid%}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Close Account</button></a>
-<!--<a href="http://127.0.0.1:8000/"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Log Out</button></a>-->
-
-<!--<a href="{% url 'signup' %}"><button class="btn btn-primary" style="font-size:12px;height:30px;width:150px">Create New Account</button></a>-->
 </div>
 {% else %}
 <div class="container" style="text-align:center">

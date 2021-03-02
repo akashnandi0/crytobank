@@ -4,15 +4,13 @@ from django.views.generic import DetailView, ListView
 from profiles.models import accountInfoModel
 from transactions.models import Transferdetails
 from django.contrib import messages
-from transactions.forms import TransferAmountForm, DepositAmountForm, WithdrawAmountForm, BalanceCheckForm
+from transactions.forms import TransferAmountForm, DepositAmountForm, WithdrawAmountForm
 from django.contrib.auth.decorators import login_required
 
 
 @login_required
 def transferamount(request):
     form = TransferAmountForm()
-    # context = {}
-    # context["form"] = form
     context = {"form": form}
     if request.method == "POST":
         form = TransferAmountForm(request.POST)
@@ -21,7 +19,7 @@ def transferamount(request):
             amount = form.cleaned_data.get("amount")
             account_number = form.cleaned_data.get("account_number")
             try:
-                object = accountInfoModel.objects.get(username=request.user,mpin=mpin)
+                object = accountInfoModel.objects.get(username=request.user, mpin=mpin)
                 object1 = accountInfoModel.objects.get(account_number=account_number)
                 bal = object.balance - amount
                 bal1 = object1.balance + amount
@@ -34,7 +32,7 @@ def transferamount(request):
                 context["form"] = form
                 return render(request, "transactions/transferamount.html", context)
 
-            # form.save()
+
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
@@ -59,7 +57,7 @@ def depositamount(request):
             amount = form.cleaned_data.get("amount")
             messages.success(request, "Deposited Successfully")
             try:
-                object = accountInfoModel.objects.get(username=request.user,mpin=mpin)
+                object = accountInfoModel.objects.get(username=request.user, mpin=mpin)
                 bal = object.balance + amount
                 object.balance = bal
                 object.save()
@@ -91,7 +89,7 @@ def withdrawamount(request):
             mpin = form.cleaned_data.get("mpin")
             amount = form.cleaned_data.get("amount")
             try:
-                object = accountInfoModel.objects.get(username=request.user,mpin=mpin)
+                object = accountInfoModel.objects.get(username=request.user, mpin=mpin)
 
                 bal = object.balance - amount
                 object.balance = bal
@@ -103,7 +101,6 @@ def withdrawamount(request):
                 context["form"] = form
                 return render(request, "transactions/depositwithdraw.html", context)
 
-            # form.save()
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
@@ -115,55 +112,14 @@ def withdrawamount(request):
     return render(request, "transactions/depositwithdraw.html", context)
 
 
-# @login_required
-# def balance(request):
-#     form = BalanceCheckForm()
-#     context = {}
-#     context["form"] = form
-#     if (request.method == "POST"):
-#         form = BalanceCheckForm(request.POST)
-#         if form.is_valid():
-#             mpin = form.cleaned_data.get("mpin")
-#             try:
-#
-#                 object = accountInfoModel.objects.get(mpin=mpin)
-#                 context["balance"] = object.balance
-#                 print(object.balance)
-#
-#                 return render(request, "transactions/checkbalance.html", context)
-#             except Exception as e:
-#                 context["form"] = form
-#                 return render(request, "transactions/checkbalance.html", context)
-#
-#     return render(request, "transactions/checkbalance.html", context)
-
 class balancecheck(LoginRequiredMixin, DetailView):
     model = accountInfoModel
     fields = ["balance"]
     template_name = 'transactions/checkbalance.html'
 
 
-# @login_required
-# def accountActivity(request):
-#     form = BalanceCheckForm()
-#     context = {}
-#     context["form"] = form
-#     if (request.method == "POST"):
-#         form = BalanceCheckForm(request.POST)
-#         if form.is_valid():
-#             mpin = form.cleaned_data.get("mpin")
-#
-#             trans = Transferdetails.objects.filter(mpin=mpin)
-#
-#             context["transaction"] = trans
-#             return render(request, "transactions/accountactivity.html", context)
-#
-#     return render(request, "transactions/accountactivity.html", context)
-
-
 class accountActivity(LoginRequiredMixin, ListView):
     model = Transferdetails
-    # forms=TransferForm()
     fields = ["account_number", "amount", "date"]
     template_name = "transactions/accountactivity1.html"
 
@@ -173,6 +129,3 @@ class accountActivity(LoginRequiredMixin, ListView):
     def get_queryset(self):
         mpin = accountInfoModel.objects.get(username=self.request.user).mpin
         return Transferdetails.objects.filter(mpin=mpin).order_by('-date')[:10]
-        # trans = transferamount.objects.filter(mpin=mpin)
-        # context["transaction"] = trans
-        # return render("transactions/accountactivity1.html")
